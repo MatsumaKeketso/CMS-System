@@ -1,0 +1,86 @@
+*{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.container {
+  width: 100%;
+  height: 100vh;
+  overflow-y: auto;
+}
+.navigation{
+  width: 100%;
+  background: rgb(6, 16, 32);
+  overflow: hidden;
+  color: white;
+}
+.navigation img{
+  position: absolute;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.418);
+  margin: 0px 20px;
+  float: left;
+  width: 140px;
+  border-bottom-right-radius: 100px;
+  border-bottom-left-radius: 100px;
+}
+.navigation ul{
+  float: right;
+  display: flex;
+}
+.navigation ul li{
+  padding: 10px 20px;
+  margin: 10px 5px;
+  list-style: none;
+  border: solid 1px white;
+  border-radius: 200px;
+  width: 100px;
+  text-align: center;
+  cursor: pointer;
+}
+.food{
+  width: 100%;
+  text-align: center;
+}
+.food h1, p{
+  padding: 20px 0px;
+}
+.pictures {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  row-gap: 10px;
+  flex-wrap: wrap;
+}
+.card{
+  background: red;
+  width: 600px;
+  margin: 2px;
+  height: 500px;
+}
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.lifestyle{
+  text-align: center;
+  background: rgb(230, 230, 230);
+  padding: 40px;
+}
+.text{
+  width: 90vw;
+}
+.offers{
+  overflow: hidden;
+  text-align: center;
+
+}
+
+.offers img{
+  width: 100vw;
+}
+.footer{
+  background: orange;
+  color: white;
+  text-align: center;
+}
+

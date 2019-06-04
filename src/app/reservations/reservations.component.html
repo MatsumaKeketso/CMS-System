@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="header">
+    <p>Welcome, keketso@gmail.com</p>
+  </div>
+  <div class="page-title">
+    <div class="image">
+      <img src="../../assets/assets/worker placeholders/placeholder-man.png" alt="Profile Picture">
+    </div>
+    <h3>Hotel Monica Reservations</h3>
+  </div>
+  <div class="body">
+    <div class="tabs">
+      <div class="account tab">
+        <div class="title">
+          <h3>Dashboard</h3>
+        </div>
+        <ul>
+          <li [routerLink]="['']" routerLinkActive="router-link-active">Home</li>
+          <li (click)="toggleRSection()"><b>Booking Section</b></li>
+          <li (click)="toggleReserved()">Booked Rooms</li>
+          <li (click)="toggleMessage()">Send Feedback</li>
+
+        </ul>
+      </div>
+      <div class="room-rate tab">
+        <div class="title">
+          <h3>Rooms Rate</h3>
+        </div>
+        <p><b>Single - </b>R399.00 pp/pn</p>
+        <p><b>Double - </b>R599.00 pp/pn</p>
+        <p><b>Twin - </b>R799.00 pp/pn</p>
+        <p><b>Deluxe - </b>R1, 999.00 pp/pn</p>
+      </div>
+    </div>
+    <router-outlet></router-outlet>
+    <!-- <app-update></app-update> -->
+    <app-payment *ngIf="isPayment"></app-payment>
+    <app-reserved-room *ngIf="isReserved"></app-reserved-room>
+    <app-message *ngIf="isMessage"></app-message>
+    <app-reservation-section *ngIf="isRSection"></app-reservation-section>
+  </div>
+</div>

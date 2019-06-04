@@ -1,0 +1,39 @@
+<div class="reservation">
+    <form #PersonsForm="ngForm" novalidate (ngSubmit)="onSubmit(PersonsForm.value)">
+    <div class="title"><h3>Reservations</h3></div>
+    <div class="personal info">
+      <div class="title">
+        <h4>Personal Information</h4>
+      </div>
+      <p><input ngModel name="id" #id="ngModel" type="number" placeholder="Unique Id"></p>
+      <p><input ngModel name="name" type="text" placeholder="Name" required></p>
+      <p><input ngModel name="lastname" type="text" placeholder="Last Name" required></p>
+      <p><input ngModel name="email" type="email" placeholder="Email Address" required></p>
+      <p><input ngModel name="phone" type="tel" placeholder="Phone Number" required></p>
+    </div>
+    <div class="room info">
+      <div class="title">
+        <h4>Room Information</h4>
+      </div>
+      <label for="category">Room type</label><br>
+      <select ngModel name="category" required>
+        <option>Single</option>
+        <option>Double</option>
+        <option>Twin</option>
+        <option>Deluxe</option>
+      </select><br>
+      <label for="check-in">Check In</label><br>
+      <input ngModel name="checkin" type="text" placeholder="Day Month Year" required><br>
+      <input ngModel name="days" type="text"  placeholder="Number of Nights" required><br>
+      <input ngModel name="people" type="text" placeholder="Number of People" required><br>
+        </div>
+      <div class="personal info">
+          <div class="title"><h3>Final Step</h3></div>
+        <p><input ngModel name="cardnumber" type="text" placeholder="Card Number"></p>
+        <p><input ngModel name="cardholder" type="text" placeholder="Card Holder Name"></p>
+        <p><input ngModel name="expiary" type="text" placeholder="Express End"></p>
+
+      <button>Book a Room</button>
+      </div>
+    </form>
+</div>

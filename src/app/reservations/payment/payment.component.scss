@@ -1,0 +1,163 @@
+:root {
+  --brown: #592316;
+  --faintDesert: #F2CDAC;
+  --darkDesert: #D9A76A;
+  --desert: #F2C777;
+  --deepBlue: #080C26;
+}
+*{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  outline: none;
+  transition: 0.3s;
+}
+.container{
+  width: 100%;
+  height: auto;
+}
+.header{
+  background:  #080C26;
+  text-align: right;
+  padding: 20px 0px;
+  color: #F2C777;
+}
+.page-title{
+  overflow: hidden;
+  padding: 10px;
+  box-shadow: 0px 2px 5px rgb(216, 216, 216);
+  z-index: 9;
+  margin-bottom: 3px;
+}
+.page-title h3{
+  padding: 20px 90px;
+}
+.image{
+  width: 70px;
+  border-radius: 100%;
+  height: 70px;
+  background: #F2C777;
+  float: left;
+}
+.image img{
+  object-fit: cover;
+
+}
+// container for account, rooms rate and reservations
+// maximised the width
+// overflowed everything inside
+.body{
+  z-index: 1;
+  width: 100%;
+  overflow: hidden;
+}
+// floated it left so everything else can align to it on the right
+.tabs{
+  float: left;
+  height: 82vh;
+  width: 300px;
+  padding: 10px;
+}
+.account{
+  width: 100%;
+  background: white;
+  margin:  0px auto 20px auto;
+}
+.account .title{
+  padding: 10px;
+  background: #080C26;
+  color:  white;
+}
+.account ul li{
+  cursor: pointer;
+  list-style: none;
+  padding: 10px 20px;
+}
+.account ul li:hover{
+  background: rgb(226, 226, 226);
+}
+.room-rate{
+  width: 100%;
+  background: white;
+  margin: auto;
+}
+.room-rate .title{
+  padding: 10px;
+  background: #080C26;
+  color:  white;
+}
+.room-rate p{
+  padding: 10px 20px;
+}
+.room-rate p:hover{
+  background: rgb(226, 226, 226);
+}
+.reservation{
+  float: left;
+  position: absolute;
+  right: 0;
+  left: 320px;
+  bottom: 0;
+  top: 164px;
+  background: white;
+}
+.reservation .title{
+  background: #080C26;
+  color: white;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-flow: wrap;
+}
+.reservation .info{
+  margin: 20px;
+  float: left;
+  width: 500px;
+  background: rgba(242, 199, 119,0.2);
+  text-align: center;
+}
+.info .title{
+  background: rgba(242, 199, 119,0.5);
+}
+input, select{
+  margin: 10px;
+  border: solid 1px gray;
+  padding: 10px;
+  width: 300px;
+  border-radius: 200px;
+  background: none;
+}
+#message{
+  padding: 50px;
+}
+.info button{
+  margin: 30px 10px 10px 10px;
+  background: rgb(242, 199, 119);
+  padding: 10px;
+  width: 100px;
+  border-radius: 200px;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+@media only screen and (max-width: 800px) {
+  .tabs{
+            float: none;
+            clear: both;
+            height: auto;
+            width: 100%;
+            padding: 0;
+  }
+  .reservation{
+            position: absolute;
+            right: 0;
+            left: 0px;
+            bottom: 0;
+            top: 620px;
+            background: white;
+  }
+  .reservation .info{
+            margin: 10px 0px;
+            width: 100%;
+            background: rgba(242, 199, 119,0.2);
+            text-align: center;
+  }
+}

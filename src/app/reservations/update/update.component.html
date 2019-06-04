@@ -1,0 +1,120 @@
+<div class="reservation">
+    <div class="title"><h3>UPDATE</h3></div>
+  <form #PersonsUpdateForm="ngForm" (ngSubmit)="onUpdate(PersonsUpdateForm.value) ">
+    <div class="personal info">
+      <div class="title1">
+        <h4>Personal Information</h4>
+      </div>
+
+<!-- id -->
+      <p><input
+        [(ngModel)]="reservations.id"
+        name="id"
+        #id="ngModel"
+        type="text"
+        placeholder="Unique Id"></p>
+
+<!-- name -->
+      <p><input
+        [(ngModel)]="reservations.name"
+        name="name"
+        type="text"
+        placeholder="Name"
+        required></p>
+
+<!-- lastname -->
+      <p><input
+        [(ngModel)]="reservations.lastname"
+        name="lastname"
+        type="text"
+        placeholder="Last Name"
+        required></p>
+
+<!-- email -->
+      <p><input [(ngModel)]="reservations.email"
+        name="email"
+        type="email"
+        placeholder="Email Address"
+        required></p>
+
+<!-- phone -->
+      <p><input [(ngModel)]="reservations.phone"
+        name="phone"
+        type="tel"
+        placeholder="Phone Number"
+        required></p>
+    </div>
+
+<!-- room info -->
+    <div class="room info">
+      <div class="title1">
+        <h4>Room Information</h4>
+      </div>
+      <label for="category">Room type</label><br>
+
+<!-- category -->
+      <select
+      [(ngModel)]="reservations.category"
+       name="category"
+       required>
+        <option>Single</option>
+        <option>Double</option>
+        <option>Twin</option>
+        <option>Deluxe</option>
+      </select><br>
+
+<!-- Check in -->
+      <label for="check-in">Check In</label><br>
+      <input
+      [(ngModel)]="reservations.checkin"
+      type="text"
+      value="ngModel.chekin | date"
+      name="checkin"
+      placeholder="Day_Month_Year"
+      required><br>
+
+<!-- check out -->
+      <label for="check-out">Days of Stay</label><br>
+      <input [(ngModel)]="reservations.days"
+      name="days"
+      type="text"
+      placeholder="Days of Stay"
+      required><br>
+
+
+      <label for="check-out">Number of People</label><br>
+      <input [(ngModel)]="reservations.people"
+      name="people"
+      type="text"
+      placeholder="People"
+      required><br>
+
+<!-- PERSONAL INFO -->
+    </div>
+      <div class="personal info">
+          <div class="title1"><h3>Final Step</h3></div>
+
+
+<!-- card number -->
+        <p><input
+          [(ngModel)]="reservations.cardnumber"
+          name="cardnumber"
+          type="text"
+           placeholder="Card Number"></p>
+
+<!-- card holder -->
+        <p><input
+          [(ngModel)]="reservations.cardholder"
+          name="cardholder"
+          type="text"
+          placeholder="Card Holder Name"></p>
+        <p><input
+          [(ngModel)]="reservations.expiary"
+          name="expiary"
+          type="text"
+          placeholder="Express End"></p>
+
+      <button>UPDATE BOOKING</button>
+      </div>
+    </form>
+  </div>

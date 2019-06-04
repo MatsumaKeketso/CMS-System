@@ -1,0 +1,144 @@
+
+// floated it left so everything else can align to it on the right
+.tabs{
+  float: left;
+  height: 82vh;
+  width: 300px;
+  padding: 10px;
+}
+.account{
+  width: 100%;
+  background: white;
+  margin:  0px auto 20px auto;
+}
+.account .title{
+  padding: 10px;
+  background: #080C26;
+  color:  white;
+}
+.account ul li{
+  cursor: pointer;
+  list-style: none;
+  padding: 10px 20px;
+}
+.account ul li:hover{
+  background: rgb(226, 226, 226);
+}
+.room-rate{
+  width: 100%;
+  background: white;
+  margin: auto;
+}
+.room-rate .title{
+  padding: 10px;
+  background: #080C26;
+  color:  white;
+}
+.room-rate p{
+  padding: 10px 20px;
+}
+.room-rate p:hover{
+  background: rgb(226, 226, 226);
+}
+.reservation{
+  float: left;
+  position: absolute;
+  right: 0;
+  left: 320px;
+  bottom: 0;
+  top: 164px;
+  background: white;
+  overflow-x: auto;
+}
+.reservation .title{
+  background: rgb(255, 255, 255);
+  color: rgb(7, 19, 32);
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-flow: wrap;
+  // width: 100%;
+}
+
+.reservation .info{
+  margin: 20px auto;
+  float: left;
+  text-align: center;
+  overflow: hidden;
+  overflow-x: auto;
+}
+.reservation .info h3{
+padding: 20px 0px;
+}
+input, select{
+  outline: none;
+  margin: 0px 20px;
+  border: none;
+  box-shadow: 0px 0px 5px rgb(226, 226, 226);
+  color: rgb(92, 92, 92);
+  padding: 10px;
+  width: 300px;
+  border-radius: 200px;
+  background: none;
+  letter-spacing: 2px;
+}
+#message{
+  padding: 50px;
+}
+.info button{
+  background: rgb(242, 199, 119);
+  padding: 10px;
+  width: 100px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-bottom: solid 1px rgb(4, 12, 27);
+}
+@media only screen and (max-width: 800px) {
+  .tabs{
+            float: none;
+            clear: both;
+            height: auto;
+            width: 100%;
+            padding: 0;
+          }
+.reservation{
+            left: 0px;
+            bottom: 0;
+            top: 620px;
+            background: white;
+            position: absolute;
+            right: 0;
+          }
+        }
+.reservation .info{
+  margin: 10px 0px;
+  overflow: hidden;
+  background: rgba(242, 199, 119,0.2);
+  text-align: center;
+  width: 100%;
+}
+
+.item {
+  background-color: rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin: 1px;
+  padding: 5px;
+  max-width: 100%;
+  width: 190px;
+}
+.grid-headers{
+background: none;
+border: none;
+color: black;
+}
+.personal{
+  overflow: auto;
+  }
+
+.grid-containe {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
