@@ -5,35 +5,96 @@
       <div class="title">
         <h4>Personal Information</h4>
       </div>
+      <!-- ID -->
       <p><input ngModel name="id" #id="ngModel" type="number" placeholder="Unique Id"></p>
-      <p><input ngModel name="name" type="text" placeholder="Name" required></p>
-      <p><input ngModel name="lastname" type="text" placeholder="Last Name" required></p>
-      <p><input ngModel name="email" type="email" placeholder="Email Address" required></p>
-      <p><input ngModel name="phone" type="tel" placeholder="Phone Number" required></p>
+
+      <!-- NAME -->
+      <p><input ngModel name="name" #name="ngModel" type="text" placeholder="Name" required></p>
+      <div class="error" *ngIf="name.invalid && name.touched">Name is Required</div>
+
+      <!-- LASTNAME -->
+      <p><input ngModel name="lastname" #lastname="ngModel" type="text" placeholder="Last Name" required></p>
+      <div class="error" *ngIf="lastname.invalid && lastname.touched">Last Name is Required</div>
+
+      <!-- EMAIL -->
+      <p><input ngModel name="email" #email="ngModel" type="email" [email]="PersonsForm.email!==''" placeholder="Email Address" required ></p>
+      <div class="error" *ngIf="email.errors?.required && email.touched">Email is Required</div>
+      <div class="error" *ngIf="email.errors?.email && email.touched">Email is Invalid</div>
+
+      <!-- PHONE -->
+      <p><input ngModel name="phone" #phone="ngModel" type="tel" placeholder="Phone Number" required></p>
+      <div class="error" *ngIf="phone.invalid && phone.touched">Phone is Required</div>
     </div>
     <div class="room info">
       <div class="title">
         <h4>Room Information</h4>
       </div>
+
+      <!-- CATEGORY -->
       <label for="category">Room type</label><br>
-      <select ngModel name="category" required>
+      <select #category="ngModel" ngModel name="category" required>
         <option>Single</option>
         <option>Double</option>
         <option>Twin</option>
         <option>Deluxe</option>
-      </select><br>
-      <label for="check-in">Check In</label><br>
-      <input ngModel name="checkin" type="text" placeholder="Day Month Year" required><br>
-      <input ngModel name="days" type="text"  placeholder="Number of Nights" required><br>
-      <input ngModel name="people" type="text" placeholder="Number of People" required><br>
+      </select>
+      <div class="error" *ngIf="category.invalid && category.touched">Category is Required</div>
+      <br>
+
+      <!-- CHECK IN -->
+      <label for="checkin">Check In</label>
+      <br>
+      <input
+      ngModel
+      #checkin="ngModel"
+      name="checkin"
+      type="date"
+      placeholder="Day Month Year"
+      required
+      >
+      <div class="error" *ngIf="checkin.invalid && checkin.touched">Checkin date is Required</div>
+      <br>
+
+      <!-- CHECK OUT -->
+      <label for="checkout">Check Out
+      </label>
+      <br>
+      <input
+      ngModel
+      #checkout="ngModel"
+      name="checkout"
+      type="date"
+      required
+      >
+      <div class="error" *ngIf="checkout.invalid && checkout.touched">Checkout date is Required</div>
+      <br>
+
+      <!-- DAYS
+      <input ngModel #days="ngModel" name="days" type="text"  placeholder="Number of Nights" required>
+      <div *ngIf="days.invalid && days.touched">Field Required</div>
+      <br> -->
+
+      <!-- PEOPLE -->
+      <input ngModel #people="ngModel" name="people" type="text" placeholder="Number of People" required>
+      <div class="error" *ngIf="people.invalid && people.touched">Number of people are Required</div>
+      <br>
         </div>
       <div class="personal info">
           <div class="title"><h3>Final Step</h3></div>
-        <p><input ngModel name="cardnumber" type="text" placeholder="Card Number"></p>
-        <p><input ngModel name="cardholder" type="text" placeholder="Card Holder Name"></p>
-        <p><input ngModel name="expiary" type="text" placeholder="Express End"></p>
 
-      <button>Book a Room</button>
+          <!-- CARD NUMBER -->
+        <p><input ngModel #cardnumber="ngModel" name="cardnumber" type="text" placeholder="Card Number" required></p>
+        <div class="error" *ngIf="cardnumber.invalid && cardnumber.touched">Card number is Required <br> Must contain 19 digits</div>
+
+        <!-- CARD HOLDER -->
+        <p><input ngModel #cardholder="ngModel" name="cardholder" type="text" placeholder="Card Holder Name" required></p>
+        <div class="error" *ngIf="cardholder.invalid && cardholder.touched">Card holder is Required</div>
+
+        <!-- EXPIARY OF BOOKING
+        <p><input ngModel #expiary="ngModel" name="expiary" type="date" placeholder="Express End" required></p>
+        <div *ngIf="name.expiary && expiary.touched"> Required</div> -->
+
+      <button *ngIf="PersonsForm.valid">Book a Room</button>
       </div>
     </form>
 </div>

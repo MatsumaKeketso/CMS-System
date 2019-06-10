@@ -1,35 +1,41 @@
 <div class="reservation">
 
-    <div class="title"><h3>Reserved Room</h3> <input type="text" placeholder="Search Person"></div>
-    <div class="personal info">
-      <div class="grid-containe" style="float: left;">
-          <div class="item grid-headers" ><h1>Booked Rooms</h1></div>
-
+  <div class="title">
+    <h3>Reserved Room</h3> <input type="text" placeholder="Search Person">
+  </div>
+  <div class="cards" *ngFor="let n of reservationList">
+    <div class="card">
+      <div class="title">
+        <h1>{{n.name}} {{n.lastname}}</h1>
       </div>
-      <div class="loop" style="float: left;" *ngFor="let n of reservationList">
-          <!-- The update button  -->
-        <button
-          style="background: rgb(0, 255, 119);"
-          routerLink="../update/{{n.id}}">Update</button>
-          <!-- The Delete Button -->
-          <button
-          style="background: rgb(255, 0, 64);"
-          (click)="onDelete(n.id)"> Delete </button>
-      <div class="item" > ID: <b>{{n.id}}</b> </div>
-      <div class="item">Name: <b>{{n.name}} {{n.lastname}}</b></div>
-      <div class="item">Email: <b>{{n.email}}</b> </div>
-      <div class="item">Phone: <b>{{n.phone}}</b></div>
-      <!-- ====================== -->
-      <div class="item">Room Category: <b>{{n.category}}</b></div>
-      <div class="item">Check In Date: <b>{{n.checkin}}</b> </div>
-      <!-- ====================== -->
-      <div class="item">Booking Expiary: <b>{{n.expiary}}</b> </div>
-      <div class="item">Card Number: <b>{{n.cardnumber}}</b> </div>
-      <div class="item">Card Holder: <b>{{n.cardholder}}</b> </div>
-      <div class="item">Days of Stay: <b>{{n.days}}</b> </div>
-      <div class="item">Number of People: <b>{{n.people}}</b> </div>
-      <div class="item">Cost: <b>{{n.cost | currency:'&#82;'}}</b></div>
-      <div class="item">Payment Verification: <b>{{n.payment}}</b> </div>
+      <div class="image">
+        <img src="{{n.room}}" alt="image card">
+      </div>
+      <div class="details">
+        <h2>{{n.category}} Suite</h2>
+        <p>{{n.checkin | date}}</p>
+        <p>{{n.days}} day stay with {{n.people}} person(s)</p>
+        <p id="payed">Payment {{n.payment}} ({{n.cost | currency:'&#82;'}})</p>
+        <p>Booking expiary: {{n.expiary | date}}</p>
+      </div>
+      <div class="contact">
+        <table>
+            <tr>
+                <th rowspan="2">CONTACT:</th>
+                <td>{{n.phone}}</td>
+              </tr>
+              <tr>
+                <td>{{n.email}}</td>
+              </tr>
+        </table>
+      </div>
+      <div class="controls">
+        <!-- The update button  -->
+      <button style="background: rgb(0, 255, 119);" routerLink="../update/{{n.id}}">Update</button>
+      <!-- The Delete Button -->
+      <button style="background: rgb(255, 0, 64);" (click)="onDelete(n.id)"> Delete </button>
       </div>
     </div>
+
   </div>
+</div>

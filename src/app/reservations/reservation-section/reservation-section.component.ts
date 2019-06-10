@@ -1,6 +1,7 @@
 import { Component, OnInit , Input, EventEmitter, Output } from '@angular/core';
 import { PersonsService } from '../../service/persons.service';
 import { reservations } from '../model/model';
+import { Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-reservation-section',
@@ -8,7 +9,6 @@ import { reservations } from '../model/model';
   styleUrls: ['./reservation-section.component.scss']
 })
 export class ReservationSectionComponent implements OnInit {
-
   constructor(private person: PersonsService) { }
   ngOnInit() { }
   onSubmit(formValues) {
@@ -22,8 +22,18 @@ export class ReservationSectionComponent implements OnInit {
 
       b.category = b.category;
       b.checkin = b.checkin;
+      b.checkout = b.checkout;
+      const start = new Date(b.checkin);
+      const end = new Date(b.checkout);
 
-      b.expiary = b.expiary;
+
+      const days = 1000 * 60 * 60 * 24;
+      const month = 1000 * 60;
+      const diff = end.valueOf() - start.valueOf();
+      b.days = Math.floor(diff / days);
+
+
+      b.expiary = Math.floor(start.valueOf() + month * 5) ;
       b.cardnumber = b.cardnumber;
       b.cardholder = b.cardholder;
       b.days = b.days;
@@ -37,6 +47,16 @@ export class ReservationSectionComponent implements OnInit {
         b.cost = 799 * b.days * b.people;
       } else if (b.category === 'Deluxe') {
         b.cost = 1999 * b.days * b.people;
+      }
+
+      if (b.category === 'Single') {
+        b.room = '../../../assets/assets/bedrooms/Deluxe-Pool-Access-Hotel-SenseSeminyak.jpg';
+      } else if (b.category === 'Double') {
+        b.room = '../../../assets/assets/bedrooms/Queen-Room.jpg';
+      } else if (b.category === 'Twin') {
+        b.room = '../../../assets/assets/bedrooms/bnago-guestroom-0099-hor-clsc.jpg';
+      } else if (b.category === 'Deluxe') {
+        b.room = '../../../assets/assets/bedrooms/download.jpg';
       }
 
       if (!b.cardnumber) {

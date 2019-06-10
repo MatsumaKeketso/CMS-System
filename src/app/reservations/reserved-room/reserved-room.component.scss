@@ -1,46 +1,14 @@
-
-// floated it left so everything else can align to it on the right
-.tabs{
-  float: left;
-  height: 82vh;
-  width: 300px;
-  padding: 10px;
+*{
+  transition: 0.3s;
+  margin: 0px;
+  padding: 0px;
 }
-.account{
-  width: 100%;
-  background: white;
-  margin:  0px auto 20px auto;
-}
-.account .title{
+.title {
   padding: 10px;
   background: #080C26;
-  color:  white;
+  color: white;
 }
-.account ul li{
-  cursor: pointer;
-  list-style: none;
-  padding: 10px 20px;
-}
-.account ul li:hover{
-  background: rgb(226, 226, 226);
-}
-.room-rate{
-  width: 100%;
-  background: white;
-  margin: auto;
-}
-.room-rate .title{
-  padding: 10px;
-  background: #080C26;
-  color:  white;
-}
-.room-rate p{
-  padding: 10px 20px;
-}
-.room-rate p:hover{
-  background: rgb(226, 226, 226);
-}
-.reservation{
+.reservation {
   float: left;
   position: absolute;
   right: 0;
@@ -50,7 +18,8 @@
   background: white;
   overflow-x: auto;
 }
-.reservation .title{
+
+.reservation .title {
   background: rgb(255, 255, 255);
   color: rgb(7, 19, 32);
   padding: 10px;
@@ -60,17 +29,8 @@
   // width: 100%;
 }
 
-.reservation .info{
-  margin: 20px auto;
-  float: left;
-  text-align: center;
-  overflow: hidden;
-  overflow-x: auto;
-}
-.reservation .info h3{
-padding: 20px 0px;
-}
-input, select{
+input,
+select {
   outline: none;
   margin: 0px 20px;
   border: none;
@@ -82,63 +42,79 @@ input, select{
   background: none;
   letter-spacing: 2px;
 }
-#message{
-  padding: 50px;
-}
-.info button{
-  background: rgb(242, 199, 119);
-  padding: 10px;
-  width: 100px;
-  border: none;
-  color: white;
-  cursor: pointer;
-  border-bottom: solid 1px rgb(4, 12, 27);
-}
-@media only screen and (max-width: 800px) {
-  .tabs{
-            float: none;
-            clear: both;
-            height: auto;
-            width: 100%;
-            padding: 0;
-          }
-.reservation{
-            left: 0px;
-            bottom: 0;
-            top: 620px;
-            background: white;
-            position: absolute;
-            right: 0;
-          }
-        }
-.reservation .info{
-  margin: 10px 0px;
-  overflow: hidden;
-  background: rgba(242, 199, 119,0.2);
-  text-align: center;
-  width: 100%;
-}
 
-.item {
-  background-color: rgba(0, 0, 0, 0.1);
-  text-align: center;
-  margin: 1px;
-  padding: 5px;
-  max-width: 100%;
-  width: 190px;
-}
-.grid-headers{
-background: none;
-border: none;
-color: black;
-}
-.personal{
-  overflow: auto;
+@media only screen and (max-width: 800px) {
+  .tabs {
+    float: none;
+    clear: both;
+    height: auto;
+    width: 100%;
+    padding: 0;
   }
 
-.grid-containe {
+  .reservation {
+    left: 0px;
+    bottom: 0;
+    top: 620px;
+    background: white;
+    position: absolute;
+    right: 0;
+  }
+}
+.cards{
+  width: 96%;
+  height: auto;
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
-  overflow-x: auto;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+.card{
+  width: 348px;
+  height: 526px;
+  margin: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.178);
+}
+.card .title{
+  height: auto;
+  justify-content: center;
+  text-align: center;
+}
+.title h1{
+  font-weight: normal;
+}
+.image{
+  width: 348px;
+}
+.image img{
+  height: 193px;
+  width: 348px;
+  object-fit: cover;
+}
+.details{
+  width: 348px;
+  padding: 10px 20px;
+}
+.details p{
+  line-height: 30px;
+}
+.details h2{
+  font-size: 30px;
+}
+.contact{
+  width: 348px;
+  padding: 10px 10px;
+}
+.controls{
+  background: red;
+  position: inherit;
+  left: 0;
+  right: 0;
+}
+.controls button{
+  width: 50%;
+  border: none;
+  padding: 10px;
+  color: white;
+  cursor: pointer;
 }

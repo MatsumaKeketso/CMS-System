@@ -5,9 +5,11 @@ export class reservations {
           lastname: string;
           email: string;
           phone: number;
+          room: string;
 
           category: any;
           checkin: string;
+          checkout: string;
 
           cost: number;
           expiary: number;
