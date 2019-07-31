@@ -65,6 +65,5 @@ export class ReservationSectionComponent implements OnInit {
         b.payment = 'Verified';
       }
     });
-    this.person.addPerson(formArray);
   }
 }

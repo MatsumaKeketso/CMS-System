@@ -9,14 +9,16 @@ import {ReservedRoomComponent} from './reservations/reserved-room/reserved-room.
 import {ReservationSectionComponent} from './reservations/reservation-section/reservation-section.component';
 import {UpdateComponent} from './reservations/update/update.component';
 import { OffersServicesComponent } from './reservations/offers-services/offers-services.component';
+import { LoginComponent } from '../app/login/login.component';
 const routes: Routes = [
-  {path: '', component: HomeComponent},
-  {path: 'reservations', component: ReservationsComponent},
+  {path: '', component: LoginComponent},
+  {path: 'home', component: HomeComponent},
+  {path: 'login', component: LoginComponent},
   {path: 'payment', component: PaymentComponent},
   {path: 'message', component: MessageComponent},
   {path: 'reservedroom', component: ReservedRoomComponent},
   {path: 'reservationsection', component: ReservationSectionComponent},
-  {path: 'update/:id', component: UpdateComponent},
+  {path: 'update', component: UpdateComponent},
   {path: 'offers-services', component: OffersServicesComponent}
 ];
 

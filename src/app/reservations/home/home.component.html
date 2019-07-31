@@ -1,201 +1,133 @@
 <div class="container">
-  <div class="navigation">
     <div class="logo">
-      <img src="../../../assets/assets/logo/logo-01.png">
-    </div>
-    <div class="nav">
-      <ul>
-        <li>Home</li>
-        <li>About</li>
-        <li>Contact Us</li>
-        <li>Gallery</li>
-        <li>Account</li>
-      </ul>
-    </div>
-  </div>
-  <div class="display">
-    <div class="text">
-      <h1>Welcome to</h1>
-      <p id="hname">Hotel Monica</p>
-      <p><i>REST EASY</i></p>
-    </div>
-  </div>
-  <div class="reserve">
-    <h1>Welcome to Hotel Monica</h1>
-    <p>Experience our relaxing hotel, pool, bed rooms and facilities!</p>
-    <div class="column-container">
-      <!-- single bed column -->
-      <div class="column">
-        <div class="image">
-          <img src="../../../assets/assets/bedrooms/Deluxe-Pool-Access-Hotel-SenseSeminyak.jpg" alt="Bedroom 1">
-        </div>
-        <button (click)="setSingle()" routerLink='reservations'>Reserve now</button>
-        <p><b>Room Type - </b>Single</p>
-        <p><b>Room Price - </b>{{399.00 * 2 | currency:'&#82;'}}</p>
-        <p><b>Max Occupancy - </b>2 persons</p>
+        <img src="../../../assets/assets/logo/logo-01.png">
       </div>
-      <div class="column">
-        <div class="image">
-          <img src="../../../assets/assets/bedrooms/Queen-Room.jpg" alt="Bedroom 1">
-        </div>
-        <button [routerLink]="['/reservations']" routerLinkActive="router-link-active">Reserve now</button>
-        <p><b>Room Type - </b>Double</p>
-        <p><b>Room Price - </b>{{599.00 * 4 | currency:'&#82;'}}</p>
-        <p><b>Max Occupancy - </b>4 persons</p>
+      <div class="hamburgerMenu">
+        <h1>Menu</h1>
+        <ul>
+            <li>
+                {{loggedin.name}} {{loggedin.surname}}
+              </li>
+          <li (click)="logout()">Logout</li>
+        </ul>
       </div>
-      <div class="column">
-        <div class="image">
-          <img src="../../../assets/assets/bedrooms/bnago-guestroom-0098-hor-clsc.jpg" alt="Bedroom 1">
-        </div>
-        <button [routerLink]="['/reservations']" routerLinkActive="router-link-active">Reserve now</button>
-        <p><b>Twin - </b>Twin</p>
-        <p><b>Room Price - </b>{{799.00 * 4 | currency:'&#82;'}}</p>
-        <p><b>Max Occupancy - </b>4 persons</p>
+      <div class="name">
+        <h1>{{hotel.hotelName}} CMS System</h1>
+        <div class="revCount">
+            <br>
+            <h2>Reviews count: {{noofReviews}}</h2>
+          </div>
       </div>
-      <div class="column">
-        <div class="image">
-          <img src="../../../assets/assets/bedrooms/download.jpg" alt="Bedroom 1">
+      <hr style="margin: 10px 0px; opacity: 0.2;">
+        <div class="hotel">
+
+          <div class="image">
+              <img src="{{hotel.images}}" alt="">
+            </div>
+            <div class="details">
+              <div>
+                  <p><b>Description</b></p>
+                  <hr>
+                  <p>{{hotel.description}}</p>
+                  <br>
+                  <p><b>Location</b></p>
+                  <hr>
+                  <p>{{hotel.location}}</p>
+                  <br>
+                  <p><b>Contacts</b></p>
+                  <hr>
+                  <p>{{hotel.contacts}}</p>
+                  <br>
+                  <p><b>Services</b></p>
+                  <hr>
+                  <div *ngFor="let item of hotel.services">
+                    <p>{{item}}</p>
+                  </div>
+              </div>
+            </div>
+            <div class="reviews">
+                <div  *ngFor="let n of userreviews">
+                  <div class="bubble" *ngIf="n.room==hotel.hotelName">
+                      <h3>{{n.person}}</h3>
+                      <h4>{{n.date}}</h4>
+                        <p>{{n.message}}</p>
+                  </div>
+                </div>
+            </div>
         </div>
-        <button [routerLink]="['/reservations']" routerLinkActive="router-link-active">Reserve now</button>
-        <p><b>Room Type - </b>Deluxe</p>
-        <p><b>Room Price - </b>{{1999.00 * 4 | currency:'&#82;'}}</p>
-        <p><b>Max Occupancy - </b>4 persons</p>
+
+      <div class="rooms">
+        <div [ngClass]="card" class="card" *ngFor="let n of reviews">
+          <div class="head">
+            <h3>{{n.roomtype}}</h3>
+          </div>
+          <div class="image">
+
+            <img src="{{n.roomimage}}" alt="">
+            <div class="button">
+              <p> {{n.roomdescription}} </p>
+              <p> Occupies {{n.occupancy}} person(s) </p>
+              <hr>
+              <h4>Features</h4>
+              <hr>
+              <div class="services"><div  *ngFor="let s of n.features">
+                <p>{{s}}</p>
+              </div></div>
+              <hr>
+              <div>
+                R {{n.roomrate}} pp/pn
+              </div>
+              <br>
+              <div>
+                <p style="color: greenyellow">This room has {{n.booked}} booking(s)</p>
+              </div>
+
+            </div>
+          </div>
+          <h4>Reviews</h4>
+          <div class="review">
+            <div class="rel">
+
+                <div class="user" *ngFor="let r of userreviews">
+                    <div *ngIf="r.room==n.roomtype">
+                        <div class="cat">
+                            <div class="header">
+                              <div class="details">
+                                <h3>{{r.person}}</h3>
+                                <p><i> {{r.date}} </i></p>
+                              </div>
+                            </div>
+                            <div class="user-reviews">
+                              <p>{{r.message}}</p>
+                            </div>
+                          </div>
+                    </div>
+                  </div>
+
+            </div>
+          </div>
+        </div>
+
       </div>
 
-    </div>
-  </div>
-  <div class="comments">
-    <h1>What they said...</h1>
-    <div class="c-column-container">
-      <div class="ccolumn">
-        <div class="cimage">
-          <img src="../../../assets/assets/worker placeholders/placeholder-man.png" alt="Bedroom 1">
-        </div>
-        <h3>Lorain Ipsum</h3>
-        <p><i>"Lorem ipsum dolor sit amet, simul regione qui an, aperiri eloquentiam ea cum, has libris eligendi eleifend
-          te. Unum consul epicuri in ius, veritus copiosae cu cum. Pro cu idque nulla saepe, putent lucilius phaedrum
-          duo no. Eu tibique copiosae percipit vis, sea in populo iuvaret, sea meis postea qualisque eu. Populo omnium
-          volumus eu nec."</i></p>
-      </div>
-      <div class="ccolumn">
-        <div class="cimage">
-          <img src="../../../assets/assets/worker placeholders/team-f.png" alt="Bedroom 1">
-        </div>
-        <h3>Lorain Ipsum</h3>
-        <p><i>"Lorem ipsum dolor sit amet, simul regione qui an, aperiri eloquentiam ea cum, has libris eligendi eleifend
-          te. Unum consul epicuri in ius, veritus copiosae cu cum. Pro cu idque nulla saepe, putent lucilius phaedrum
-          duo no. Eu tibique copiosae percipit vis, sea in populo iuvaret, sea meis postea qualisque eu. Populo omnium
-          volumus eu nec."</i></p>
-      </div>
-      <div class="ccolumn">
-        <div class="cimage">
-          <img src="../../../assets/assets/worker placeholders/placeholder-man.png" alt="Bedroom 1">
-        </div>
-        <h3>Lorain Ipsum</h3>
-        <p><i>"Lorem ipsum dolor sit amet, simul regione qui an, aperiri eloquentiam ea cum, has libris eligendi eleifend
-          te. Unum consul epicuri in ius, veritus copiosae cu cum. Pro cu idque nulla saepe, putent lucilius phaedrum
-          duo no. Eu tibique copiosae percipit vis, sea in populo iuvaret, sea meis postea qualisque eu. Populo omnium
-          volumus eu nec."</i></p>
-      </div>
-      <div class="ccolumn">
-        <div class="cimage">
-          <img src="../../../assets/assets/worker placeholders/team-f.png" alt="Bedroom 1">
-        </div>
-        <h3>Lorain Ipsum</h3>
-        <p><i>"Lorem ipsum dolor sit amet, simul regione qui an, aperiri eloquentiam ea cum, has libris eligendi eleifend
-          te. Unum consul epicuri in ius, veritus copiosae cu cum. Pro cu idque nulla saepe, putent lucilius phaedrum
-          duo no. Eu tibique copiosae percipit vis, sea in populo iuvaret, sea meis postea qualisque eu. Populo omnium
-          volumus eu nec."</i></p>
-      </div>
-    </div>
-  </div>
-  <div class="reserve">
-    <h1>Welcome to Hotel Monica</h1>
-    <p>Experience our relaxing hotel, pool, bed rooms and facilities!</p>
-    <div class="column-container">
-      <div class="column">
-        <div class="image">
-          <img src="../../../assets/assets/hotel view outside/70561234.jpg" alt="Bedroom 1">
-        </div>
-        <br>
-        <br>
-        <p>Lorem ipsum dolor sit amet, simul regione qui an, aperiri eloquentiam ea cum, has libris eligendi eleifend
-          te. Unum consul epicuri in ius, veritus copiosae cu cum. Pro cu idque nulla saepe, putent lucilius phaedrum
-          duo no. Eu tibique copiosae percipit vis, sea in populo iuvaret, sea meis postea qualisque eu. Populo omnium
-          volumus eu nec.</p>
-      </div>
-      <div class="column">
-        <div class="image">
-          <img src="../../../assets/assets/hotel view outside/Protea-Hotel-Menlyn.jpg" alt="Bedroom 1">
-        </div>
-        <br>
-        <br>
-        <p>Lorem ipsum dolor sit amet, simul regione qui an, aperiri eloquentiam ea cum, has libris eligendi eleifend
-          te. Unum consul epicuri in ius, veritus copiosae cu cum. Pro cu idque nulla saepe, putent lucilius phaedrum
-          duo no. Eu tibique copiosae percipit vis, sea in populo iuvaret, sea meis postea qualisque eu. Populo omnium
-          volumus eu nec.</p>
-      </div>
-      <div class="column">
-        <div class="image">
-          <img src="../../../assets/assets/hotel view outside/ph_elicc_pool_2000.jpg" alt="Bedroom 1">
-        </div>
-        <br>
-        <br>
-        <p>Lorem ipsum dolor sit amet, simul regione qui an, aperiri eloquentiam ea cum, has libris eligendi eleifend
-          te. Unum consul epicuri in ius, veritus copiosae cu cum. Pro cu idque nulla saepe, putent lucilius phaedrum
-          duo no. Eu tibique copiosae percipit vis, sea in populo iuvaret, sea meis postea qualisque eu. Populo omnium
-          volumus eu nec.</p>
-      </div>
-      <div class="column">
-        <div class="image">
-          <img src="../../../assets/assets/hotel view outside/quin-hotel-terrace-new.jpg" alt="Bedroom 1">
-        </div>
-        <br>
-        <br>
-        <p>Lorem ipsum dolor sit amet, simul regione qui an, aperiri eloquentiam ea cum, has libris eligendi eleifend
-          te. Unum consul epicuri in ius, veritus copiosae cu cum. Pro cu idque nulla saepe, putent lucilius phaedrum
-          duo no. Eu tibique copiosae percipit vis, sea in populo iuvaret, sea meis postea qualisque eu. Populo omnium
-          volumus eu nec.</p>
-      </div>
-      <div class="button">
-        <button [routerLink]="['/offers-services']" routerLinkActive="router-link-active" >Check out the rest of our Services</button>
-      </div>
 
-    </div>
   </div>
-  <div class="about">
-    <h1>ABOUT US</h1>
-    <p>Lorem ipsum dolor sit amet, usu ex modo tacimates repudiandae, mei ne platonem consulatu. Ad pro malis inani
-      copiosae. Vis in ornatus legimus, at propriae suscipit eos, ei ignota tamquam vim. No erat vituperata eum. Ad
-      epicuri suavitate vim, ei etiam dolorum oportere per, vis quodsi viderer cu. An quem tempor sea, ei vel omnes
-      doming offendit. Ne summo accommodare sea. <br><br>
+  <div class="">
 
-      Vix cu alia iudico corpora, autem vulputate pri et, eu per graeci suscipit vivendum. Expetendis percipitur
-      reprehendunt no sed, sale reque reformidans ea has, nostrud voluptua erroribus ad quo. Cum et eirmod impetus. Cum
-      ut repudiare argumentum, esse propriae his ei. Pro congue possit ea, ea mandamus disputationi mediocritatem nam.
-      Vix purto epicurei disputationi id. <br><br>
-
-      Pro graece fabellas recteque cu, no mel bonorum salutatus, his ne facete percipitur. Mei discere alterum erroribus
-      eu. Eam saepe tollit audiam et, diam equidem lobortis vis no. Ne eam error laoreet eleifend, no fugit omittam pro.
-      At hinc exerci dicunt mea, vim te odio quodsi volumus.</p>
   </div>
-  <div class="bottom">
-    <div class="form">
-      <form>
-        <h1>CONTACT US</h1>
-        <input type="text" placeholder="Name and Surname"><br>
-        <input type="email" placeholder="Email"><br>
-        <textarea placeholder="Message"></textarea><br>
-        <button type="submit">Send Message</button>
-      </form>
-    </div>
-    <div class="contacts">
-      <div class="column2">
-        <p><b>Phone: </b>+00 000 0000</p>
-        <p><b>Landline: </b>(000) 000 0000</p>
-        <p><b>Address: </b>Lorem Ipsum, solodet, drufet</p>
-        <p><b>Email: </b>hotel.monica@gmail.com</p>
+  <div class="userform">
+    <img src="https://s3-us-west-2.amazonaws.com/plugin-icons.craftcms/commentscvQGFyYIVV53CsHK33dTFFHFFgXnYd9dm0OF.svg?1535165130">
+      <div class="controls">
+          <select [(ngModel)]="review.room">
+              <option disabled selected> - Pick Room to Review -</option>
+              <option>Deluxe Double Room</option>
+              <option>Standard Double Room</option>
+              <option>Standard Twin Room</option>
+              <option>Sunny Hill Hotel</option>
+            </select>
+            <input type="text" placeholder="Full Name" [(ngModel)]="review.person">
+    <textarea placeholder="Review here" [(ngModel)]="review.message"></textarea>
+    <button (click)="addResponse()">Send</button>
       </div>
-    </div>
-  </div>
 </div>
+

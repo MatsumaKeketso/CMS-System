@@ -2,14 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { RouterLink, ActivatedRoute, Router } from '@angular/router';
 import { PersonsService } from '../../service/persons.service';
 import { reservations } from '../model/model';
+import * as firebase from 'firebase';
 @Component({
   selector: 'app-update',
   templateUrl: './update.component.html',
   styleUrls: ['./update.component.scss']
 })
 export class UpdateComponent implements OnInit {
+  db = firebase.firestore();
   selectedID: number;
-  reservations: reservations;
+  rooms = [];
+  user = {};
+  doc = {};
   constructor(
     private activateRouter: ActivatedRoute,
     private personsService: PersonsService,
@@ -17,18 +21,12 @@ export class UpdateComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    this.activateRouter.params.subscribe(data => {
-      this.selectedID = data.id;
-    });
-    this.getPersonById();
-
   }
-  getPersonById() {
-    this.reservations = this.personsService.getPersonById(this.selectedID);
+  getuser() {
 
-  }
-  onUpdate(v) {
-    this.personsService.updatePerson(v);
-    this.router.navigate(['/reservations']);
+      }
+  onClick() {
+    this.personsService.storeRoom(null);
+    this.router.navigate(['home']);
   }
 }

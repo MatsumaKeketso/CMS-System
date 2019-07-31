@@ -20,9 +20,8 @@ export class ReservedRoomComponent implements OnInit {
   getReservations() {
     // we assign the model's datatypes with the data in the service this way
     // that is the function that returns our reservations data from the service, it displays the information
-    this.reservationList = this.reservationService.getReservations();
+
   }
   onDelete(id){
-    this.reservationService.delete(id);
   }
 }

@@ -14,7 +14,11 @@ import { PaymentComponent } from './reservations/payment/payment.component';
 import { HomeComponent } from './reservations/home/home.component';
 import { SearchPersonPipe } from './pipe/search-person.pipe';
 import { OffersServicesComponent } from './reservations/offers-services/offers-services.component';
+import { FIREBASE_CONFIG } from '../app/app.firebase.config';
+import * as firebase from 'firebase';
+import { LoginComponent } from './login/login.component';
 
+firebase.initializeApp(FIREBASE_CONFIG);
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,13 +30,14 @@ import { OffersServicesComponent } from './reservations/offers-services/offers-s
     PaymentComponent,
     HomeComponent,
     SearchPersonPipe,
-    OffersServicesComponent
+    OffersServicesComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CommonModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
